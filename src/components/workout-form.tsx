@@ -34,15 +34,7 @@ export function WorkoutForm({ onAdd }: WorkoutFormProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        width: "80%",
-        alignItems: "center",
-        justifyContent: "center",
-        border: "1px solid #ccc",
-        gap: "0.5rem",
-      }}
+      className="bg-white shadow rounded-lg p-4 flex flex-col gap-3 mb-5 w-4/5"
     >
       <label htmlFor="workout-title">Título do treino</label>
       <input
@@ -50,7 +42,8 @@ export function WorkoutForm({ onAdd }: WorkoutFormProps) {
         id="workout-title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        placeholder="título do treino"
+        placeholder="Título do treino"
+        className="border rounded p-2"
       />
 
       <label htmlFor="workout-duration">Duração (min)</label>
@@ -60,6 +53,7 @@ export function WorkoutForm({ onAdd }: WorkoutFormProps) {
         value={duration}
         onChange={(e) => setDuration(Number(e.target.value))}
         placeholder="Duração (min)"
+        className="border rounded p-2"
       />
 
       <label htmlFor="workout-intensity">Intensidade</label>
@@ -71,6 +65,7 @@ export function WorkoutForm({ onAdd }: WorkoutFormProps) {
         placeholder="Intensidade"
         min={1}
         max={5}
+        className="border rounded p-2"
       />
 
       <label htmlFor="workout-date">Dia de treino</label>
@@ -80,9 +75,10 @@ export function WorkoutForm({ onAdd }: WorkoutFormProps) {
         value={date}
         onChange={(e) => setDate(e.target.value)}
         placeholder="Dia de treino"
+        className="border rounded p-2"
       />
 
-      <button type="submit">Adicionar treino</button>
+      <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Adicionar treino</button>
     </form>
   );
 }
