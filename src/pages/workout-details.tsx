@@ -8,7 +8,7 @@ export function WorkoutDetails() {
 
   return (
     <>
-      <h2>Detalhes do treino - ID {id}</h2>
+      <h2 className="font-bold text-gray-600 text-xl mb-3">Detalhes do treino - ID {id}</h2>
 
       <WorkoutCard workout={state.workout} />
     </>
