@@ -12,7 +12,7 @@ export function WorkoutForm({ onAdd }: WorkoutFormProps) {
   const [intensity, setIntensity] = useState<Intensity>(1);
   const [date, setDate] = useState("");
 
-  function handleSubmit(event: React.FormEvent) {
+  function handleSubmit(event: React.FormEvent): void {
     event.preventDefault();
 
     const workout: Workout = {
