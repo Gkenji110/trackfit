@@ -12,7 +12,7 @@ export function WorkoutResume({ workout, removeWorkouts }: WorkoutResumeProps) {
       <div className="flex justify-between">
         <h2 className="font-bold text-gray-600">{workout.title}</h2>
 
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 items-center justify-center">
         <Link
           to={`/workout/${workout.id}`}
           state={{ workout }}
