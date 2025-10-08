@@ -42,9 +42,7 @@ function App() {
         <Suspense fallback={<Loading/>}>
           <Routes>
             <Route path="/" element={<Layout />}>
-              <Route index element={<Home workouts={workouts} removeWorkouts={removeWorkout} />
-                }
-              />
+              <Route index element={<Home  />}/>
               <Route
                 path="/add"
                 element={<AddWorkout onAdd={addWorkout} workouts={workouts} />}

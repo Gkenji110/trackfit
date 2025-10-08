@@ -1,0 +1,12 @@
+{
+    "workouts": [
+        {
+          "id": "1",
+          "title": "Corrida",
+          "intensity": 4,
+          "duration": 50,
+          "date": "2025-10-10",
+          "notes": "Corrida no parque"
+        }
+    ]
+}
