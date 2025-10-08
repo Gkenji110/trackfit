@@ -3,7 +3,7 @@ import type { Workout } from "../types/workout";
 
 interface WorkoutResumeProps {
   workout: Workout;
-  removeWorkouts: (id:string) => void;
+  removeWorkouts?: (id:string) => void;
 }
 
 export function WorkoutResume({ workout, removeWorkouts }: WorkoutResumeProps) {
@@ -21,7 +21,11 @@ export function WorkoutResume({ workout, removeWorkouts }: WorkoutResumeProps) {
           detalhes
         </Link>
         
-        <button className="bg-red-600 border text-white rounded p-2" onClick={() => removeWorkouts(workout.id)}>Remover treino</button>
+        <button 
+        className="bg-red-600 border text-white rounded p-2" 
+        //</div>onClick={() => removeWorkouts(workout.id)}
+        >Remover treino
+        </button>
         </div>
 
       </div>

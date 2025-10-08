@@ -3,7 +3,7 @@ import { WorkoutResume } from "./workout-resume";
 
 interface WorkoutListProps {
   workoutList: Workout[];
-  removeWorkouts: (id:string) => void;
+  removeWorkouts?: (id:string) => void;
 }
 
 export function WorkoutList({ workoutList, removeWorkouts }: WorkoutListProps) {

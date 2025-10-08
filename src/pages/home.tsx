@@ -1,17 +1,28 @@
+import { useEffect, useState } from "react";
 import { WorkoutList } from "../components/workout-list";
 import type { Workout } from "../types/workout";
 
-interface HomeProps {
-  workouts: Workout[];
-  removeWorkouts: (id:string) => void;
-}
 
-export function Home({ workouts, removeWorkouts }: HomeProps) {
+
+export function Home() {
+  const [workouts, setWorkouts] = useState<Workout[]>([]);
+
+  useEffect(() => {
+    fetch("http://localhosto:4000/workouts", {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+      },
+    })  
+      .then((data) => data.json())
+      .then((data: Workout[]) => setWorkouts(data));
+  }, []);
+
   return (
     <>
       <h2 className="font-bold text-gray-600 text-xl mb-3">Página Inicial - Lista de Treinos</h2>
 
-      <WorkoutList removeWorkouts={removeWorkouts} workoutList={workouts} />
+      <WorkoutList workoutList={workouts} />
     </>
   );
 }
