@@ -1,12 +1,20 @@
 {
-    "workouts": [
-        {
-          "id": "1",
-          "title": "Corrida",
-          "intensity": 4,
-          "duration": 50,
-          "date": "2025-10-10",
-          "notes": "Corrida no parque"
-        }
-    ]
+  "workouts": [
+    {
+      "id": "2c115a19-6c77-4c16-9346-1776f7faa2c7",
+      "title": "yoga",
+      "duration": 30,
+      "intensity": 3,
+      "date": "2025-10-26",
+      "notes": "yoga matinal"
+    },
+    {
+      "id": "d2e2211c-91dd-4c70-bbc4-a11990f6a122",
+      "title": "Tênis",
+      "duration": 30,
+      "intensity": 5,
+      "date": "2025-10-21",
+      "notes": "Tênis da tarde"
+    }
+  ]
 }
