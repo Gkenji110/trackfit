@@ -7,6 +7,14 @@
       "intensity": 5,
       "date": "2202-02-20",
       "notes": ""
+    },
+    {
+      "id": "ba678eb5-763e-4d65-b7d4-179737a532fd",
+      "title": "Yoga",
+      "duration": 60,
+      "intensity": 5,
+      "date": "2026-02-20",
+      "notes": "teste"
     }
   ]
 }

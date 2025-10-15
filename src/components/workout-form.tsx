@@ -1,10 +1,15 @@
+
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { WorkoutsContext } from "../context/workout-context";
 import { workoutSchema, type WorkoutFormData } from "../schemas/workout-schema";
 import type { Intensity } from "../types/intensity";
 import type { Workout } from "../types/workout";
 
 export function WorkoutForm() {
+  const { saveWorkouts } = useContext(WorkoutsContext);
+
   const {
     register,
     handleSubmit,
@@ -14,7 +19,7 @@ export function WorkoutForm() {
     resolver: zodResolver(workoutSchema),
   });
 
-  function onSubmit(data: WorkoutFormData): void {
+  async function onSubmit(data: WorkoutFormData): Promise<void> {
     const workout: Workout = {
       id: crypto.randomUUID(),
       title: data.title,
@@ -24,10 +29,10 @@ export function WorkoutForm() {
       notes: data.notes,
     };
 
-    fetch("http://localhost:4000/workouts", {
-      method: "POST",
-      body: JSON.stringify(workout),
-    });
+    await saveWorkouts(workout);
+
+
+
 
     reset();
   }

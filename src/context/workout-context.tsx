@@ -3,7 +3,7 @@ import type { Workout } from "../types/workout";
 
 interface WorkoutContextProps {
   workouts: Workout[];
-  saveWorkouts: (workouts: Workout[]) => void;
+  saveWorkouts: (workouts: Workout) => void;
   removeWorkout: (id: string) => void;
 }
 
@@ -18,8 +18,13 @@ interface WorkoutsProviderProps {
 export function WorkoutsProvider({ children }: WorkoutsProviderProps) {
   const [workouts, setWorkouts] = useState<Workout[]>([]);
 
-  const saveWorkouts = useCallback((value: Workout[]) => {
-    setWorkouts(value);
+  const saveWorkouts = useCallback(async (value: Workout) => {
+    await fetch("http://localhost:4000/workouts", {
+      method: "POST",
+      body: JSON.stringify(value),
+    });
+
+    await fetchWorkouts();
   }, []);
 
   const fetchWorkouts = useCallback(async () => {
@@ -32,7 +37,7 @@ export function WorkoutsProvider({ children }: WorkoutsProviderProps) {
 
     const data = await response.json();
 
-    saveWorkouts(data);
+    setWorkouts(data);
   }, []);
 
   useEffect(() => {
