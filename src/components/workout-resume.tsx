@@ -1,5 +1,6 @@
-import { useCallback } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { WorkoutsContext } from "../context/workout-context";
 import type { Workout } from "../types/workout";
 
 interface WorkoutResumeProps {
@@ -7,11 +8,7 @@ interface WorkoutResumeProps {
 }
 
 export function WorkoutResume({ workout }: WorkoutResumeProps) {
-  const removeWorkout = useCallback((id: string) => {
-    fetch(`http://localhost:4000/workouts/${id}`, {
-      method: "DELETE",
-    });
-  }, []);
+  const { removeWorkout } = useContext(WorkoutsContext);
 
   return (
     <div className="w-3/5 rounded-lg shadow px-3 py-4 flex flex-col gap-5 mb-3 bg-white">

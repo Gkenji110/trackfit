@@ -1,20 +1,12 @@
 {
   "workouts": [
     {
-      "id": "2c115a19-6c77-4c16-9346-1776f7faa2c7",
-      "title": "yoga",
-      "duration": 30,
-      "intensity": 3,
-      "date": "2025-10-26",
-      "notes": "yoga matinal"
-    },
-    {
-      "id": "d2e2211c-91dd-4c70-bbc4-a11990f6a122",
-      "title": "Tênis",
-      "duration": 30,
+      "id": "8fbe1b50-6c7a-4a3e-abec-5c42ffe08c19",
+      "title": "Jiu-jitsu",
+      "duration": 60,
       "intensity": 5,
-      "date": "2025-10-21",
-      "notes": "Tênis da tarde"
+      "date": "2202-02-20",
+      "notes": ""
     }
   ]
 }
