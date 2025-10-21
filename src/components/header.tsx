@@ -1,8 +1,12 @@
-export function Header() {
+interface HeaderProps {
+  children: React.ReactNode;
+}
+
+export function Header({ children }: HeaderProps) {
   return (
     <>
-      <h1>Seja bem vindo ao trackfit</h1>
-      <h2>O melhor site para ver treinos</h2>
+      <h1 className="font-bold text-gray-600 text-xl mb-3">{children}</h1>
+
     </>
   );
 }
