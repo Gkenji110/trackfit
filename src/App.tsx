@@ -5,6 +5,7 @@ import { Fallback } from "./components/fallback";
 import { Layout } from "./components/layout";
 import { Loading } from "./components/loading";
 import { WorkoutsProvider } from "./context/workout-context";
+import { Login } from "./pages/login";
 
 const Home = lazy(() =>
   import("./pages/home").then((m) => ({ default: m.Home }))
@@ -31,6 +32,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Layout />}>
                 <Route index element={<Home />} />
+                <Route path="login" element={<Login />} />
                 <Route path="/add" element={<AddWorkout />} />
                 <Route path="/workout/:id" element={<WorkoutDetails />} />
                 <Route path="*" element={<NotFound />} />

@@ -1,19 +1,19 @@
 {
   "workouts": [
     {
-      "id": "8fbe1b50-6c7a-4a3e-abec-5c42ffe08c19",
-      "title": "Jiu-jitsu",
+      "id": "cf47e610-a198-4a93-addb-2f131f14cc1e",
+      "title": "Muay thai",
       "duration": 60,
       "intensity": 5,
-      "date": "2202-02-20",
-      "notes": ""
+      "date": "2026-02-02",
+      "notes": "aula de muay thai a noite"
     },
     {
-      "id": "ba678eb5-763e-4d65-b7d4-179737a532fd",
-      "title": "Yoga",
-      "duration": 60,
+      "id": "dfe4c4d0-dbe0-4d64-8ed9-03533d894605",
+      "title": "Muay thai",
+      "duration": 50,
       "intensity": 5,
-      "date": "2026-02-20",
+      "date": "2026-02-02",
       "notes": "teste"
     }
   ]
