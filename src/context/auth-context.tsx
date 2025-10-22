@@ -1,7 +1,8 @@
 import { createContext, useState } from "react";
+import type { AuthUser } from "../types/auth-user";
 
 interface AuthContextProps {
-  user: string | null;
+  user: AuthUser | null;
   login: (username: string) => void;
   logout: () => void;
 }
@@ -15,10 +16,12 @@ interface AuthProviderProps {
 }
 
 export function AuthProvider({ children }: AuthProviderProps) {
-  const [user, setUser] = useState<string | null>(null);
+  const [user, setUser] = useState<AuthUser | null>(null);
 
   function login(username: string) {
-    setUser(username);
+    // chamar API de Get User
+
+    // setUser(username) ;
     localStorage.setItem("user", username);
   }
 

@@ -3,11 +3,11 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth-context";
-import { loginSchema, type LoginFormData } from "../schemas/login-schamea";
+import { loginSchema, type LoginFormData } from "../schemas/login-schema";
 
 export function Login() {
   const { login } = useContext(AuthContext);
-  const navigate= useNavigate();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -15,13 +15,12 @@ export function Login() {
     formState: { errors },
   } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
-  }); 
-  
+  });
+
   function onSubmit({ username }: LoginFormData) {
     login(username);
     navigate("/");
   }
-
 
   return (
     <>
@@ -41,7 +40,7 @@ export function Login() {
           )}
 
           <button
-            className="bg-blue-600 text-white px-4 py-2 rounded houver:cursour-pointer"
+            className="bg-blue-600 text-white px-4 py-2 rounded hover:cursor-pointer"
             type="submit"
           >
             Entrar

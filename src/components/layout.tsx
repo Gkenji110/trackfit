@@ -3,7 +3,7 @@ import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../context/auth-context";
 
 export function Layout() {
-  const { logout} = useContext(AuthContext);
+  const { logout } = useContext(AuthContext);
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -17,8 +17,9 @@ export function Layout() {
               Novo treino
             </Link>
           </div>
+
           <button
-            className="bg-red-600 text-white font-semibold houver:cursour-pointer rounded p-2"
+            className="bg-red-500 text-white font-semibold hover:cursor-pointer rounded p-2"
             onClick={() => logout()}
           >
             Sair
