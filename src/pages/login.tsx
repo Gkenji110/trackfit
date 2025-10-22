@@ -1,4 +1,9 @@
+import { useContext } from "react";
+import { AuthContext } from "../context/auth-context";
+
 export function Login() {
+  const { login } = useContext(AuthContext);
+  
   return (
     <>
       <div className="max-w-sm mx-auto p-4 bg-white shadow rounded">

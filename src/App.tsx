@@ -1,9 +1,10 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useContext } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Fallback } from "./components/fallback";
 import { Layout } from "./components/layout";
 import { Loading } from "./components/loading";
+import { AuthContext, AuthProvider } from "./context/auth-context";
 import { WorkoutsProvider } from "./context/workout-context";
 import { Login } from "./pages/login";
 
@@ -23,24 +24,50 @@ const WorkoutDetails = lazy(() =>
   import("./pages/workout-details").then((m) => ({ default: m.WorkoutDetails }))
 );
 
+interface PrivateRouteProps {
+  children: React.ReactNode;
+}
+
+function PrivateRoute({ children }: PrivateRouteProps) {
+  const { user } = useContext(AuthContext);
+
+  return user ? children : <Navigate to="/login" />;
+}
+
 function App() {
   return (
     <WorkoutsProvider>
-      <BrowserRouter>
-        <ErrorBoundary FallbackComponent={Fallback}>
-          <Suspense fallback={<Loading />}>
-            <Routes>
-              <Route path="/" element={<Layout />}>
-                <Route index element={<Home />} />
-                <Route path="login" element={<Login />} />
-                <Route path="/add" element={<AddWorkout />} />
-                <Route path="/workout/:id" element={<WorkoutDetails />} />
-                <Route path="*" element={<NotFound />} />
-              </Route>
-            </Routes>
-          </Suspense>
-        </ErrorBoundary>
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <ErrorBoundary FallbackComponent={Fallback}>
+            <Suspense fallback={<Loading />}>
+              <Routes>
+                <Route path="/" element={<Layout />}>
+                  <Route
+                    index
+                    element={
+                      <PrivateRoute>
+                        <Home />
+                      </PrivateRoute>
+                    }
+                  />
+                  <Route path="login" element={<Login />} />
+                  <Route
+                    path="/add"
+                    element={
+                      <PrivateRoute>
+                        <AddWorkout />
+                      </PrivateRoute>
+                    }
+                  />
+                  <Route path="/workout/:id" element={<WorkoutDetails />} />
+                  <Route path="*" element={<NotFound />} />
+                </Route>
+              </Routes>
+            </Suspense>
+          </ErrorBoundary>
+        </BrowserRouter>
+      </AuthProvider>
     </WorkoutsProvider>
   );
 }
