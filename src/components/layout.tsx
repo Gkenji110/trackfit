@@ -20,7 +20,7 @@ export function Layout() {
 
           <button
             className="bg-red-500 text-white font-semibold hover:cursor-pointer rounded p-2"
-            onClick={() => logout()}
+            onClick={() => logout}
           >
             Sair
           </button>
