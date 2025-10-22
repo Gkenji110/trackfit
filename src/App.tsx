@@ -42,6 +42,7 @@ function App() {
           <ErrorBoundary FallbackComponent={Fallback}>
             <Suspense fallback={<Loading />}>
               <Routes>
+                <Route path="login" element={<Login />} />
                 <Route path="/" element={<Layout />}>
                   <Route
                     index
@@ -51,7 +52,6 @@ function App() {
                       </PrivateRoute>
                     }
                   />
-                  <Route path="login" element={<Login />} />
                   <Route
                     path="/add"
                     element={
