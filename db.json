@@ -6,7 +6,8 @@
       "duration": 60,
       "intensity": 5,
       "date": "2026-02-02",
-      "notes": "aula de muay thai a noite"
+      "notes": "aula de muay thai a noite",
+      "userId": "1"
     },
     {
       "id": "dfe4c4d0-dbe0-4d64-8ed9-03533d894605",
@@ -14,7 +15,25 @@
       "duration": 50,
       "intensity": 5,
       "date": "2026-02-02",
-      "notes": "teste"
+      "notes": "teste",
+      "userId": "2"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "leandro",
+      "type": "Personal"
+    },
+    {
+      "id": "2",
+      "name": "kiko",
+      "type": "gymmember"
+    },
+    {
+      "id": "3",
+      "name": "Madruga",
+      "type": "Personal"
     }
   ]
 }
