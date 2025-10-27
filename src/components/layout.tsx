@@ -1,9 +1,10 @@
 import { useContext } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth-context";
 
 export function Layout() {
   const { logout } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -20,7 +21,10 @@ export function Layout() {
 
           <button
             className="bg-red-500 text-white font-semibold hover:cursor-pointer rounded p-2"
-            onClick={() => logout}
+            onClick={() => {
+              logout();
+              navigate("/login");
+            }}
           >
             Sair
           </button>

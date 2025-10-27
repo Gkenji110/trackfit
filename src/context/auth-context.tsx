@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import type { AuthUser } from "../types/auth-user";
 
 interface AuthContextProps {
@@ -18,12 +18,32 @@ interface AuthProviderProps {
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<AuthUser | null>(null);
 
-  function login(username: string) {
+  async function login(username: string) {
     // chamar API de Get User
 
-    // setUser(username) ;
-    localStorage.setItem("user", username);
+    const response = await fetch(
+      `http://localhost:4000/users?name=${username.toLocaleLowerCase()}` 
+    );
+
+    const [data]: AuthUser[] = await response.json();
+
+    setUser(data);
+
+    localStorage.setItem("user", JSON.stringify(data));
   }
+
+  useEffect(() => {
+    const data = localStorage.getItem("user");
+
+    if (!data) {
+      setUser(null);
+      return;
+    }
+
+    const user: AuthUser = JSON.parse(data);
+
+    setUser(user);
+  }, []);
 
   function logout() {
     setUser(null);

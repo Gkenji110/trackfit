@@ -31,6 +31,8 @@ interface PrivateRouteProps {
 function PrivateRoute({ children }: PrivateRouteProps) {
   const { user } = useContext(AuthContext);
 
+  console.log(user);
+
   return user ? children : <Navigate to="/login" />;
 }
 

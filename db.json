@@ -32,8 +32,13 @@
     },
     {
       "id": "3",
-      "name": "Madruga",
+      "name": "madruga",
       "type": "Personal"
+    },
+    {
+      "id": "4",
+      "name": "gustavo",
+      "type": "Pernonal"
     }
   ]
 }

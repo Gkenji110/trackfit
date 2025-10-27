@@ -17,8 +17,8 @@ export function Login() {
     resolver: zodResolver(loginSchema),
   });
 
-  function onSubmit({ username }: LoginFormData) {
-    login(username);
+  async function onSubmit({ username }: LoginFormData) {
+    await login(username);
     navigate("/");
   }
 
