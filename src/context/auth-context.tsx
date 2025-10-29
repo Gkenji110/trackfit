@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import type { AuthUser } from "../types/auth-user";
 
 interface AuthContextProps {
@@ -31,19 +31,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     localStorage.setItem("user", JSON.stringify(data));
   }
-
-  useEffect(() => {
-    const data = localStorage.getItem("user");
-
-    if (!data) {
-      setUser(null);
-      return;
-    }
-
-    const user: AuthUser = JSON.parse(data);
-
-    setUser(user);
-  }, []);
 
   function logout() {
     setUser(null);

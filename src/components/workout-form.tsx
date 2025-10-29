@@ -6,9 +6,11 @@ import { WorkoutsContext } from "../context/workout-context";
 import { workoutSchema, type WorkoutFormData } from "../schemas/workout-schema";
 import type { Intensity } from "../types/intensity";
 import type { Workout } from "../types/workout";
+import { AuthContext } from "../context/auth-context";
 
 export function WorkoutForm() {
   const { saveWorkouts } = useContext(WorkoutsContext);
+  const {user} = useContext(AuthContext);
 
   const {
     register,
@@ -20,6 +22,10 @@ export function WorkoutForm() {
   });
 
   async function onSubmit(data: WorkoutFormData): Promise<void> {
+    if (!user) {
+      throw new Error("Usuário não autenticado");
+    }
+    
     const workout: Workout = {
       id: crypto.randomUUID(),
       title: data.title,
@@ -27,6 +33,7 @@ export function WorkoutForm() {
       intensity: data.intensity as Intensity,
       date: data.date,
       notes: data.notes,
+      userId: user.id,
     };
 
     await saveWorkouts(workout);
