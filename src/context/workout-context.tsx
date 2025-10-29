@@ -1,11 +1,12 @@
-import { createContext, useCallback, useEffect, useState } from "react";
+import { createContext, useCallback, useState } from "react";
 import type { Workout } from "../types/workout";
 import type { AuthUser } from "../types/auth-user";
 
 interface WorkoutContextProps {
   workouts: Workout[];
-  saveWorkouts: (workouts: Workout) => void;
-  removeWorkout: (id: string) => void;
+  saveWorkouts: (workouts: Workout) => Promise<void>;
+  removeWorkout: (id: string) => Promise<void>;
+  fetchWorkouts: () => Promise<void>;
 }
 
 export const WorkoutsContext = createContext<WorkoutContextProps>(
@@ -29,13 +30,8 @@ export function WorkoutsProvider({ children }: WorkoutsProviderProps) {
   }, []);
 
   const fetchWorkouts = useCallback(async () => {
-    setTimeout(() => {
-      console.log("esperando");
-    }, 3000);
 
     const storage = localStorage.getItem("user");
-
-    console.log("storage", storage);
 
     if (!storage) {
       throw new Error("Usuario não está autenticado");
@@ -58,10 +54,6 @@ export function WorkoutsProvider({ children }: WorkoutsProviderProps) {
     setWorkouts(data);
   }, []);
 
-  useEffect(() => {
-    void fetchWorkouts();
-  }, []);
-
   const removeWorkout = useCallback(async (id: string) => {
     await fetch(`http://localhost:4000/workouts/${id}`, {
       method: "DELETE",
@@ -76,6 +68,7 @@ export function WorkoutsProvider({ children }: WorkoutsProviderProps) {
         workouts,
         saveWorkouts,
         removeWorkout,
+        fetchWorkouts,
       }}
     >
       {children}
