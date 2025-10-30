@@ -1,5 +1,7 @@
 import { createContext, useState } from "react";
 import type { AuthUser } from "../types/auth-user";
+import { API_WORKOUT } from "../api/workout-api";
+import Cookies from 'js-cookie';
 
 interface AuthContextProps {
   user: AuthUser | null;
@@ -22,7 +24,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     // chamar API de Get User
 
     const response = await fetch(
-      `http://localhost:4000/users?name=${username.toLocaleLowerCase()}` 
+      `${API_WORKOUT}/users?name=${username.toLocaleLowerCase()}` 
     );
 
     const [data]: AuthUser[] = await response.json();
@@ -30,6 +32,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     setUser(data);
 
     localStorage.setItem("user", JSON.stringify(data));
+    Cookies.set("user", JSON.stringify(data));
   }
 
   function logout() {
